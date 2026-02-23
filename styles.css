@@ -1,0 +1,327 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Space Mono', monospace;
+    background: linear-gradient(135deg, #0a0a1e 0%, #16213e 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #fff;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+.main-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    background: rgba(10, 10, 30, 0.95);
+    border: 3px solid #00ff88;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+    border-radius: 8px;
+    max-height: 95vh;
+}
+
+.game-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 0 0 auto;
+}
+
+.question-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 0 0 350px;
+    padding: 20px;
+    background: rgba(0, 50, 100, 0.3);
+    border: 2px solid #00ff88;
+    border-radius: 8px;
+}
+
+.hud {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background: rgba(0, 50, 100, 0.7);
+    border: 2px solid #00ff88;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.hud-item {
+    display: flex;
+    gap: 8px;
+}
+
+.label {
+    color: #00ff88;
+}
+
+.value {
+    color: #ffff00;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+}
+
+.question-display {
+    text-align: left;
+    padding: 15px;
+    background: rgba(0, 100, 150, 0.5);
+    border: 2px solid #00ff88;
+    border-radius: 4px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#question-text {
+    font-size: 16px;
+    color: #00ff88;
+    font-weight: bold;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.answers-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.answer-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    background: rgba(153, 69, 255, 0.2);
+    border: 2px solid #9945ff;
+    border-radius: 6px;
+    cursor: default;
+    transition: all 0.3s ease;
+    min-height: 50px;
+}
+
+.answer-label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffff00;
+    min-width: 30px;
+    text-align: center;
+    background: rgba(153, 69, 255, 0.5);
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.answer-text {
+    flex: 1;
+    color: #fff;
+    font-size: 14px;
+    text-align: left;
+}
+
+#gameCanvas {
+    display: block;
+    background: linear-gradient(180deg, #0a0a2e 0%, #16213e 50%, #1a1a50 100%);
+    border: 3px solid #00ff88;
+    border-radius: 4px;
+    margin: 0 auto;
+    box-shadow: inset 0 0 20px rgba(0, 255, 136, 0.2);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    animation: fadeIn 0.3s ease-in;
+}
+
+#instructionsModal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background-color: #0a0a1e;
+    padding: 30px;
+    border: 3px solid #00ff88;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.8);
+    animation: slideDown 0.3s ease-out;
+}
+
+.modal:not(#instructionsModal) .modal-content {
+    margin: 15% auto;
+    width: 80%;
+    max-width: 400px;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-content h2 {
+    color: #ffff00;
+    margin-bottom: 20px;
+    font-size: 28px;
+    text-shadow: 0 0 10px rgba(255, 255, 0, 0.8);
+}
+
+.modal-content p {
+    color: #00ff88;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.modal-content button {
+    background-color: #00ff88;
+    color: #0a0a1e;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+.modal-content button:hover {
+    background-color: #00ff88;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 1);
+}
+
+.modal-content button:active {
+    transform: scale(0.98);
+}
+
+/* Instructions Modal Styles */
+.instructions-content {
+    max-width: 700px;
+    width: 90%;
+    overflow: visible;
+}
+
+.instructions-content h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 15px rgba(255, 255, 0, 0.8);
+}
+
+.instructions-text {
+    text-align: left;
+    color: #00ff88;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.instructions-text p {
+    margin-bottom: 10px;
+    color: #00ff88;
+}
+
+.instructions-text strong {
+    color: #ffff00;
+    text-shadow: 0 0 5px rgba(255, 255, 0, 0.6);
+}
+
+.instructions-text ul {
+    list-style: none;
+    padding-left: 0px;
+    margin-bottom: 10px;
+}
+
+.instructions-text li {
+    margin-bottom: 6px;
+    padding-left: 0px;
+}
+
+.instructions-text li::before {
+    content: '→';
+    color: rgb(77, 163, 255);
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.start-button {
+    background-color: #ffff00 !important;
+    color: #0a0a1e !important;
+    padding: 12px 35px !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    border: none !important;
+    border-radius: 6px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 0 15px rgba(255, 255, 0, 0.8) !important;
+    display: block !important;
+    margin: 0 auto !important;
+}
+
+.start-button:hover {
+    background-color: #ffff00 !important;
+    transform: scale(1.08) !important;
+    box-shadow: 0 0 25px rgba(255, 255, 0, 1) !important;
+}
+
+.start-button:active {
+    transform: scale(0.95) !important;
+}
+
+@media (max-width: 1200px) {
+    .main-container {
+        flex-direction: column;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .question-panel {
+        flex: none;
+    }
+
+    .hud {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    #gameCanvas {
+        width: 100%;
+        height: auto;
+    }
+}

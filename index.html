@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sông Đáy - Quiz Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Left side: Game Canvas -->
+        <div class="game-panel">
+            <div class="hud">
+                <div class="hud-item">
+                    <span class="label">Điểm:</span>
+                    <span class="value" id="score">0</span>
+                </div>
+                <div class="hud-item">
+                    <span class="label">Mạng:</span>
+                    <span class="value" id="lives">3</span>
+                </div>
+                <div class="hud-item">
+                    <span class="label">Thời gian:</span>
+                    <span class="value" id="timer">15</span>s
+                </div>
+                <div class="hud-item">
+                    <span class="label">Câu hỏi:</span>
+                    <span class="value" id="question-number">1</span>/10
+                </div>
+            </div>
+            <canvas id="gameCanvas" width="550" height="500"></canvas>
+        </div>
+
+        <!-- Right side: Questions and Answers -->
+        <div class="question-panel">
+            <div class="question-display">
+                <p id="question-text">Loading...</p>
+            </div>
+            <div class="answers-container">
+                <div class="answer-box" id="answer-0">
+                    <span class="answer-label">A</span>
+                    <span class="answer-text" id="answer-text-0">-</span>
+                </div>
+                <div class="answer-box" id="answer-1">
+                    <span class="answer-label">B</span>
+                    <span class="answer-text" id="answer-text-1">-</span>
+                </div>
+                <div class="answer-box" id="answer-2">
+                    <span class="answer-label">C</span>
+                    <span class="answer-text" id="answer-text-2">-</span>
+                </div>
+                <div class="answer-box" id="answer-3">
+                    <span class="answer-label">D</span>
+                    <span class="answer-text" id="answer-text-3">-</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="instructionsModal" class="modal">
+        <div class="modal-content instructions-content">
+            <h2>Hướng Dẫn Chơi</h2>
+            <div class="instructions-text">
+                <p><strong>Nhiệm vụ:</strong></p>
+                <ul>
+                    <li>Điều khiển tàu vũ trụ của bạn để bắn hạ các đáp án sai và bảo vệ đáp án đúng. Bạn có 15 giây cho mỗi câu hỏi. Trò chơi bắt đầu với 3 mạng - mất hết 3 mạng, cuộc chơi kết thúc.</li>
+                </ul>
+                <p><strong>Cách điều khiển:</strong></p>
+                <ul>
+                    <li><strong>[A] / [D]</strong>: Di chuyển tàu vũ trụ.</li>
+                    <li><strong>[Space]</strong>: Bắn đạn.</li>
+                </ul>
+                
+                <p><strong>Cách tính điểm:</strong></p>
+                <ul>
+                    <li>+1 điểm: Khi bạn bắn hạ tất cả đáp án sai và để đáp án đúng vượt qua.</li>
+                    <li>-1 mạng: Khi bắn trúng đáp án đúng hoặc để đáp án sai vượt qua.</li>
+                </ul>
+
+            </div>
+            <button class="start-button" onclick="startGameFromInstructions()">Bắt Đầu</button>
+        </div>
+    </div>
+
+    <div id="gameOverModal" class="modal">
+        <div class="modal-content">
+            <h2>GAME OVER</h2>
+            <p>Điểm số: <span id="gameOverScore">0</span>/10</p>
+            <button onclick="location.reload()">Chơi Lại</button>
+        </div>
+    </div>
+
+    <div id="finishedModal" class="modal">
+        <div class="modal-content">
+            <h2>HOÀN THÀNH!</h2>
+            <p>Điểm số cuối cùng: <span id="finalScore">0</span>/10</p>
+            <button onclick="location.reload()">Chơi Lại</button>
+        </div>
+    </div>
+
+    <div id="wrongAnswerModal" class="modal">
+        <div class="modal-content">
+            <h2>Mất một mạng</h2>
+            <p id="wrongAnswerText">Đáp án đúng: A</p>
+            <button onclick="continueGame()">Tiếp tục</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
