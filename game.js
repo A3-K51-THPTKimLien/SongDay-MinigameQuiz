@@ -22,7 +22,7 @@ const questions = [
     },
     {
         text: "Câu thơ sau sử dụng biện pháp tu từ gì?\n“Sông Đáy chảy vào đời tôi\nNhư mẹ tôi gánh nặng rẽ vào ngõ sau mỗi buổi chiều đi làm về vất vả”",
-        answers: ['Hoán dụ', 'Ẩn dụ', 'So sánh', 'Ẩn dụ và so sánh'],
+        answers: ['Hoán dụ', 'Ẩn dụ', 'So sánh', 'Ẩn dụ và song sánh'],
         correct: 3
     },
     {
@@ -493,38 +493,38 @@ function finishGame() {
 // Sound functions (user will provide audio files)
 function playShootSound() {
     // TODO: Play shoot sound
-    // const audio = new Audio('sounds/shoot.mp3');
-    // audio.play();
-    console.log('Shoot sound');
+    const audio = new Audio('shoot.wav');
+    audio.play();
+    audio.volume = 0.02
 }
 
 function playExplosionSound() {
     // TODO: Play explosion sound
-    // const audio = new Audio('sounds/explosion.mp3');
-    // audio.play();
-    console.log('Explosion sound');
+    const audio = new Audio('explosion.wav');
+    audio.play();
+    audio.volume = 0.02
 }
 
 function playGameOverSound() {
     // TODO: Play game over sound
-    // const audio = new Audio('sounds/gameover.mp3');
-    // audio.play();
-    console.log('Game over sound');
+    const audio = new Audio('gameover.wav');
+    audio.play();
+    audio.volume = 0.1
 }
 
 function playFinishedSound() {
     // TODO: Play finished sound
-    // const audio = new Audio('sounds/finished.mp3');
-    // audio.play();
-    console.log('Finished sound');
+    const audio = new Audio('finished.wav');
+    audio.play();
+    audio.volume = 0.1
 }
 
 function playBackgroundMusic() {
     // TODO: Play background music
-    // const audio = new Audio('sounds/background.mp3');
-    // audio.loop = true;
-    // audio.play();
-    console.log('Background music started');
+    const audio = new Audio('background.mp3');
+    audio.loop = true;
+    audio.volume = 0.05
+    audio.play();
 }
 
 // Input handling
@@ -614,4 +614,3 @@ window.addEventListener('load', () => {
     // Game will start when user clicks "Bắt Đầu Chơi" button
     gameLoop();
 });
-
