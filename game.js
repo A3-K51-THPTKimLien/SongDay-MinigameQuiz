@@ -22,7 +22,7 @@ const questions = [
     },
     {
         text: "Câu thơ sau sử dụng biện pháp tu từ gì?\n“Sông Đáy chảy vào đời tôi\nNhư mẹ tôi gánh nặng rẽ vào ngõ sau mỗi buổi chiều đi làm về vất vả”",
-        answers: ['Hoán dụ', 'Ẩn dụ', 'So sánh', 'Ẩn dụ và song sánh'],
+        answers: ['Hoán dụ', 'Ẩn dụ', 'So sánh', 'Ẩn dụ và so sánh'],
         correct: 3
     },
     {
@@ -614,3 +614,4 @@ window.addEventListener('load', () => {
     // Game will start when user clicks "Bắt Đầu Chơi" button
     gameLoop();
 });
+
